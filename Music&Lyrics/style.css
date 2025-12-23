@@ -1,0 +1,178 @@
+/* ================= BASE LAYOUT ================= */
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* ================= MUSIC ANIMATED BACKGROUND ================= */
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    inset: -50%;
+    z-index: 0;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255, 111, 97, 0.15), transparent 40%),
+        radial-gradient(circle at 80% 30%, rgba(255, 215, 0, 0.12), transparent 45%),
+        radial-gradient(circle at 50% 80%, rgba(0, 200, 255, 0.15), transparent 50%);
+    animation: moveGlow 22s linear infinite;
+}
+
+body::after {
+    animation-duration: 32s;
+    mix-blend-mode: screen;
+}
+
+@keyframes moveGlow {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(5%, -5%) scale(1.05); }
+    100% { transform: translate(0, 0) scale(1); }
+}
+
+/* ================= CONTAINER ================= */
+
+.container {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    width: 100%;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.65);
+    padding: 30px 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* ================= HEADER ================= */
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    color: #ffdf00;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+}
+
+/* ================= SEARCH ================= */
+
+.search-box {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+input {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    min-width: 150px;
+}
+
+button {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: none;
+    background: #ff6f61;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #ff4c3b;
+}
+
+/* ================= SONG INFO ================= */
+
+#songTitle {
+    margin: 10px 0;
+    font-size: 1.6rem;
+    color: #ffd700;
+}
+
+/* ================= LYRICS BOX ================= */
+
+.lyrics-container {
+    text-align: left;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 12px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+/* ================= KARAOKE EFFECT ================= */
+
+#lyrics span {
+    display: block;
+    padding: 2px 0;
+    transition: color 0.3s, background 0.3s;
+}
+
+#lyrics span.active {
+    color: #ffdf00;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+    padding-left: 6px;
+}
+
+/* ================= PROGRESS BAR ================= */
+
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    margin: 15px 0;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #ff6f61, #ffd700);
+    transition: width 0.3s linear;
+}
+
+/* ================= SCROLLBAR ================= */
+
+.lyrics-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.lyrics-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media screen and (max-width: 600px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    #songTitle {
+        font-size: 1.3rem;
+    }
+
+    .lyrics-container {
+        font-size: 0.95rem;
+    }
+}
